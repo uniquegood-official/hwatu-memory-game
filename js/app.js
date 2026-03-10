@@ -540,27 +540,30 @@
     if (gs.phase !== 'input') return;
 
     playTapSound();
-    lockInput(600);
+    lockInput(300);
 
     var expected = gs.sequence[gs.userInput.length];
     if (cardId === expected.id) {
       gs.userInput.push(cardId);
       gs.correct++;
-      render();
-      if (gs.userInput.length === gs.total) {
-        setTimeout(function () { completeGame('순서를 모두 맞히셨어요!', gs.correct, gs.total); }, 600);
-      } else {
-        showPraise();
-      }
     } else {
-      showEncourage(function () {
-        // 순서가 틀리면 진행은 계속하되 해당 순서에 올바른 답 표시 후 넘김
-        gs.userInput.push(expected.id);
-        render();
-        if (gs.userInput.length === gs.total) {
-          setTimeout(function () { completeGame('잘 하셨어요! 순서 기억은 어려운 일이에요.', gs.correct, gs.total); }, 600);
-        }
-      });
+      // 틀렸을 때: 팝업 없이 정답 카드를 기록하고 계속 진행
+      gs.userInput.push(expected.id);
+    }
+    render();
+
+    if (gs.userInput.length === gs.total) {
+      // 모두 입력 완료 — 최종 결과 팝업 한 번만
+      var allCorrect = gs.correct === gs.total;
+      if (allCorrect) {
+        showPraise(function () {
+          completeGame('순서를 모두 맞히셨어요!', gs.correct, gs.total);
+        });
+      } else {
+        showEncourage(function () {
+          completeGame('잘 하셨어요! 순서 기억은 어려운 일이에요.', gs.correct, gs.total);
+        });
+      }
     }
   }
 
@@ -672,11 +675,11 @@
 
   function initGame4() {
     var cfg = getDiffConfig();
-    var months = pick(getUniqueMonths(), cfg.matchPairs);
+    // 같은 이미지 2장씩 — 카드를 1장 골라 동일한 2장을 쌍으로 구성
+    var picked = pick(CARDS, cfg.matchPairs);
     var cards = [];
-    months.forEach(function (m) {
-      var mc = getCardsByMonth(m);
-      cards.push(mc[0], mc[1]);
+    picked.forEach(function (c) {
+      cards.push(c, c);  // 동일 카드 2장
     });
     state.gameState = {
       cards: shuffle(cards),
@@ -690,7 +693,7 @@
 
   function renderGame4() {
     var gs = state.gameState;
-    var guide = '<div class="guide-message">카드를 두 장씩 뒤집어 같은 달을 찾아보세요</div>';
+    var guide = '<div class="guide-message">카드를 두 장씩 뒤집어 같은 그림을 찾아보세요</div>';
 
     var cardsHTML = gs.cards.map(function (c, i) {
       var isFlipped = gs.flipped.indexOf(i) < 0 && gs.matched.indexOf(i) < 0;
@@ -724,7 +727,7 @@
       var c1 = gs.cards[gs.flipped[0]];
       var c2 = gs.cards[gs.flipped[1]];
 
-      if (c1.month === c2.month) {
+      if (c1.id === c2.id) {
         gs.matched.push(gs.flipped[0], gs.flipped[1]);
         gs.correct++;
         gs.flipped = [];
