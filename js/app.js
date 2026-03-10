@@ -131,15 +131,24 @@
     var idx = options.dataIndex !== undefined ? ' data-index="' + options.dataIndex + '"' : '';
     var dataId = ' data-id="' + card.id + '"';
 
+    var faceContent = '';
+    if (card.imageSrc) {
+      faceContent =
+        '<img class="card-image" src="' + card.imageSrc + '" alt="' + card.monthName + ' ' + card.name + '" draggable="false">' +
+        '<span class="card-label">' + card.monthName + ' ' + card.name + '</span>';
+    } else {
+      faceContent =
+        '<span class="card-emoji">' + card.emoji + '</span>' +
+        '<span class="card-month">' + card.monthName + '</span>' +
+        '<span class="card-name">' + card.name + '</span>';
+    }
+
     return '<div class="hwatu-card' + flipped + selected + matched + disabled + ' ' + extra + '"' +
       idx + dataId +
       (onClick ? ' onclick="' + onClick + '"' : '') + '>' +
       '<div class="hwatu-card-inner">' +
         '<div class="hwatu-card-face ' + card.season + '">' +
-          '<span class="card-emoji">' + card.emoji + '</span>' +
-          '<span class="card-month">' + card.monthName + '</span>' +
-          '<span class="card-name">' + card.name + '</span>' +
-          '<span class="card-season ' + card.season + '">' + card.seasonName + '</span>' +
+          faceContent +
         '</div>' +
         '<div class="hwatu-card-back"></div>' +
       '</div>' +
@@ -513,7 +522,7 @@
         return renderCard(c, {
           disabled: used,
           dataIndex: i,
-          onClick: 'APP.game2Click("' + c.id + '")'
+          onClick: "APP.game2Click('" + c.id + "')"
         });
       }).join('');
 
@@ -594,8 +603,11 @@
     }
 
     if (gs.phase === 'hidden') {
+      var targetVisual = gs.target.imageSrc
+        ? '<img class="target-thumb" src="' + gs.target.imageSrc + '" alt="' + gs.target.name + '" draggable="false">'
+        : '<span class="card-emoji">' + gs.target.emoji + '</span>';
       var target = '<div class="target-display">' +
-        '<span class="card-emoji">' + gs.target.emoji + '</span>' +
+        targetVisual +
         '<span>' + gs.target.monthName + ' ' + gs.target.name + ' 카드는 어디 있었을까요?</span>' +
       '</div>';
 

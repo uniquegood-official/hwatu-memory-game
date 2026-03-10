@@ -1,55 +1,81 @@
 /* ===== 화투 카드 데이터 ===== */
 
 // 화투 12월 대표 카드 데이터
-// 각 월에 2장씩 총 24장 — 추후 실제 이미지로 교체 시 imageSrc 필드 추가
+// 각 월에 2장씩 총 24장 — Wikimedia Commons SVG Hwatu 이미지 사용 (CC BY-SA 4.0, by Mliu92)
+var HWATU_IMG_BASE = 'https://upload.wikimedia.org/wikipedia/commons/';
+
 var CARDS = [
   // 1월 — 소나무 (松)
-  { id: 'jan-a', month: 1, monthName: '1월', name: '소나무', detail: '솔', category: '광', season: 'spring', seasonName: '봄', emoji: '🌲', color: '#3A7D44' },
-  { id: 'jan-b', month: 1, monthName: '1월', name: '학', detail: '솔의 학', category: '새', season: 'spring', seasonName: '봄', emoji: '🦢', color: '#3A7D44' },
+  { id: 'jan-a', month: 1, monthName: '1월', name: '소나무', detail: '솔', category: '광', season: 'spring', seasonName: '봄', emoji: '🌲', color: '#3A7D44',
+    imageSrc: HWATU_IMG_BASE + '9/9d/Hwatu_January_Hikari.svg' },
+  { id: 'jan-b', month: 1, monthName: '1월', name: '학', detail: '솔의 학', category: '새', season: 'spring', seasonName: '봄', emoji: '🦢', color: '#3A7D44',
+    imageSrc: HWATU_IMG_BASE + 'd/da/Hwatu_January_Tanzaku.svg' },
 
   // 2월 — 매화 (梅)
-  { id: 'feb-a', month: 2, monthName: '2월', name: '매화', detail: '매', category: '꽃', season: 'spring', seasonName: '봄', emoji: '🌺', color: '#D45B7A' },
-  { id: 'feb-b', month: 2, monthName: '2월', name: '꾀꼬리', detail: '매의 새', category: '새', season: 'spring', seasonName: '봄', emoji: '🐦', color: '#D45B7A' },
+  { id: 'feb-a', month: 2, monthName: '2월', name: '매화', detail: '매', category: '꽃', season: 'spring', seasonName: '봄', emoji: '🌺', color: '#D45B7A',
+    imageSrc: HWATU_IMG_BASE + 'b/bd/Hwatu_February_Tanzaku.svg' },
+  { id: 'feb-b', month: 2, monthName: '2월', name: '꾀꼬리', detail: '매의 새', category: '새', season: 'spring', seasonName: '봄', emoji: '🐦', color: '#D45B7A',
+    imageSrc: HWATU_IMG_BASE + '0/03/Hwatu_February_Tane.svg' },
 
   // 3월 — 벚꽃 (桜)
-  { id: 'mar-a', month: 3, monthName: '3월', name: '벚꽃', detail: '벚', category: '광', season: 'spring', seasonName: '봄', emoji: '🌸', color: '#F4A0B0' },
-  { id: 'mar-b', month: 3, monthName: '3월', name: '벚꽃잎', detail: '벚의 꽃', category: '꽃', season: 'spring', seasonName: '봄', emoji: '🌷', color: '#F4A0B0' },
+  { id: 'mar-a', month: 3, monthName: '3월', name: '벚꽃', detail: '벚', category: '광', season: 'spring', seasonName: '봄', emoji: '🌸', color: '#F4A0B0',
+    imageSrc: HWATU_IMG_BASE + '9/93/Hwatu_March_Hikari.svg' },
+  { id: 'mar-b', month: 3, monthName: '3월', name: '벚꽃잎', detail: '벚의 꽃', category: '꽃', season: 'spring', seasonName: '봄', emoji: '🌷', color: '#F4A0B0',
+    imageSrc: HWATU_IMG_BASE + 'f/f3/Hwatu_March_Tanzaku.svg' },
 
   // 4월 — 등나무 (藤)
-  { id: 'apr-a', month: 4, monthName: '4월', name: '등나무', detail: '흑싸리', category: '꽃', season: 'summer', seasonName: '여름', emoji: '🪻', color: '#7B68AE' },
-  { id: 'apr-b', month: 4, monthName: '4월', name: '두견새', detail: '흑의 새', category: '새', season: 'summer', seasonName: '여름', emoji: '🐤', color: '#7B68AE' },
+  { id: 'apr-a', month: 4, monthName: '4월', name: '등나무', detail: '흑싸리', category: '꽃', season: 'summer', seasonName: '여름', emoji: '🪻', color: '#7B68AE',
+    imageSrc: HWATU_IMG_BASE + '7/75/Hwatu_April_Tanzaku.svg' },
+  { id: 'apr-b', month: 4, monthName: '4월', name: '두견새', detail: '흑의 새', category: '새', season: 'summer', seasonName: '여름', emoji: '🐤', color: '#7B68AE',
+    imageSrc: HWATU_IMG_BASE + 'e/e6/Hwatu_April_Tane.svg' },
 
   // 5월 — 난초 (蘭)
-  { id: 'may-a', month: 5, monthName: '5월', name: '난초', detail: '초', category: '꽃', season: 'summer', seasonName: '여름', emoji: '🌿', color: '#5A9E6F' },
-  { id: 'may-b', month: 5, monthName: '5월', name: '다리', detail: '초의 다리', category: '장식', season: 'summer', seasonName: '여름', emoji: '🌉', color: '#5A9E6F' },
+  { id: 'may-a', month: 5, monthName: '5월', name: '난초', detail: '초', category: '꽃', season: 'summer', seasonName: '여름', emoji: '🌿', color: '#5A9E6F',
+    imageSrc: HWATU_IMG_BASE + '0/0f/Hwatu_May_Tanzaku.svg' },
+  { id: 'may-b', month: 5, monthName: '5월', name: '다리', detail: '초의 다리', category: '장식', season: 'summer', seasonName: '여름', emoji: '🌉', color: '#5A9E6F',
+    imageSrc: HWATU_IMG_BASE + '7/7e/Hwatu_May_Tane.svg' },
 
   // 6월 — 모란 (牡丹)
-  { id: 'jun-a', month: 6, monthName: '6월', name: '모란', detail: '목단', category: '꽃', season: 'summer', seasonName: '여름', emoji: '🌹', color: '#C44569' },
-  { id: 'jun-b', month: 6, monthName: '6월', name: '나비', detail: '목단의 나비', category: '동물', season: 'summer', seasonName: '여름', emoji: '🦋', color: '#C44569' },
+  { id: 'jun-a', month: 6, monthName: '6월', name: '모란', detail: '목단', category: '꽃', season: 'summer', seasonName: '여름', emoji: '🌹', color: '#C44569',
+    imageSrc: HWATU_IMG_BASE + 'f/fc/Hwatu_June_Tanzaku.svg' },
+  { id: 'jun-b', month: 6, monthName: '6월', name: '나비', detail: '목단의 나비', category: '동물', season: 'summer', seasonName: '여름', emoji: '🦋', color: '#C44569',
+    imageSrc: HWATU_IMG_BASE + 'e/e1/Hwatu_June_Tane.svg' },
 
   // 7월 — 싸리 (萩)
-  { id: 'jul-a', month: 7, monthName: '7월', name: '싸리', detail: '홍싸리', category: '꽃', season: 'autumn', seasonName: '가을', emoji: '🌾', color: '#D4764E' },
-  { id: 'jul-b', month: 7, monthName: '7월', name: '멧돼지', detail: '홍의 멧돼지', category: '동물', season: 'autumn', seasonName: '가을', emoji: '🐗', color: '#D4764E' },
+  { id: 'jul-a', month: 7, monthName: '7월', name: '싸리', detail: '홍싸리', category: '꽃', season: 'autumn', seasonName: '가을', emoji: '🌾', color: '#D4764E',
+    imageSrc: HWATU_IMG_BASE + '3/31/Hwatu_July_Tanzaku.svg' },
+  { id: 'jul-b', month: 7, monthName: '7월', name: '멧돼지', detail: '홍의 멧돼지', category: '동물', season: 'autumn', seasonName: '가을', emoji: '🐗', color: '#D4764E',
+    imageSrc: HWATU_IMG_BASE + 'd/d5/Hwatu_July_Tane.svg' },
 
   // 8월 — 억새 (芒)
-  { id: 'aug-a', month: 8, monthName: '8월', name: '억새', detail: '공산', category: '광', season: 'autumn', seasonName: '가을', emoji: '🌕', color: '#E8A850' },
-  { id: 'aug-b', month: 8, monthName: '8월', name: '기러기', detail: '공산의 기러기', category: '새', season: 'autumn', seasonName: '가을', emoji: '🦆', color: '#E8A850' },
+  { id: 'aug-a', month: 8, monthName: '8월', name: '억새', detail: '공산', category: '광', season: 'autumn', seasonName: '가을', emoji: '🌕', color: '#E8A850',
+    imageSrc: HWATU_IMG_BASE + 'c/c6/Hwatu_August_Hikari.svg' },
+  { id: 'aug-b', month: 8, monthName: '8월', name: '기러기', detail: '공산의 기러기', category: '새', season: 'autumn', seasonName: '가을', emoji: '🦆', color: '#E8A850',
+    imageSrc: HWATU_IMG_BASE + 'c/c7/Hwatu_August_Tane.svg' },
 
   // 9월 — 국화 (菊)
-  { id: 'sep-a', month: 9, monthName: '9월', name: '국화', detail: '국', category: '꽃', season: 'autumn', seasonName: '가을', emoji: '🌼', color: '#F5C542' },
-  { id: 'sep-b', month: 9, monthName: '9월', name: '술잔', detail: '국의 술잔', category: '장식', season: 'autumn', seasonName: '가을', emoji: '🍶', color: '#F5C542' },
+  { id: 'sep-a', month: 9, monthName: '9월', name: '국화', detail: '국', category: '꽃', season: 'autumn', seasonName: '가을', emoji: '🌼', color: '#F5C542',
+    imageSrc: HWATU_IMG_BASE + '4/4c/Hwatu_September_Tanzaku.svg' },
+  { id: 'sep-b', month: 9, monthName: '9월', name: '술잔', detail: '국의 술잔', category: '장식', season: 'autumn', seasonName: '가을', emoji: '🍶', color: '#F5C542',
+    imageSrc: HWATU_IMG_BASE + 'c/c5/Hwatu_September_Tane.svg' },
 
   // 10월 — 단풍 (紅葉)
-  { id: 'oct-a', month: 10, monthName: '10월', name: '단풍', detail: '풍', category: '꽃', season: 'winter', seasonName: '겨울', emoji: '🍁', color: '#C0392B' },
-  { id: 'oct-b', month: 10, monthName: '10월', name: '사슴', detail: '풍의 사슴', category: '동물', season: 'winter', seasonName: '겨울', emoji: '🦌', color: '#C0392B' },
+  { id: 'oct-a', month: 10, monthName: '10월', name: '단풍', detail: '풍', category: '꽃', season: 'winter', seasonName: '겨울', emoji: '🍁', color: '#C0392B',
+    imageSrc: HWATU_IMG_BASE + 'c/c0/Hwatu_October_Tanzaku.svg' },
+  { id: 'oct-b', month: 10, monthName: '10월', name: '사슴', detail: '풍의 사슴', category: '동물', season: 'winter', seasonName: '겨울', emoji: '🦌', color: '#C0392B',
+    imageSrc: HWATU_IMG_BASE + 'f/f0/Hwatu_October_Tane.svg' },
 
   // 11월 — 오동 (桐)
-  { id: 'nov-a', month: 11, monthName: '11월', name: '오동', detail: '동', category: '광', season: 'winter', seasonName: '겨울', emoji: '🍂', color: '#8B7355' },
-  { id: 'nov-b', month: 11, monthName: '11월', name: '봉황', detail: '동의 봉황', category: '새', season: 'winter', seasonName: '겨울', emoji: '🔥', color: '#8B7355' },
+  { id: 'nov-a', month: 11, monthName: '11월', name: '오동', detail: '동', category: '광', season: 'winter', seasonName: '겨울', emoji: '🍂', color: '#8B7355',
+    imageSrc: HWATU_IMG_BASE + 'd/d1/Hwatu_November_Hikari.svg' },
+  { id: 'nov-b', month: 11, monthName: '11월', name: '봉황', detail: '동의 봉황', category: '새', season: 'winter', seasonName: '겨울', emoji: '🔥', color: '#8B7355',
+    imageSrc: HWATU_IMG_BASE + 'e/e6/Hwatu_November_Kasu_1.svg' },
 
   // 12월 — 비 (雨)
-  { id: 'dec-a', month: 12, monthName: '12월', name: '비', detail: '비', category: '광', season: 'winter', seasonName: '겨울', emoji: '🌧️', color: '#5B7DB1' },
-  { id: 'dec-b', month: 12, monthName: '12월', name: '버들', detail: '비의 버들', category: '장식', season: 'winter', seasonName: '겨울', emoji: '🌿', color: '#5B7DB1' }
+  { id: 'dec-a', month: 12, monthName: '12월', name: '비', detail: '비', category: '광', season: 'winter', seasonName: '겨울', emoji: '🌧️', color: '#5B7DB1',
+    imageSrc: HWATU_IMG_BASE + '6/6b/Hwatu_December_Hikari.svg' },
+  { id: 'dec-b', month: 12, monthName: '12월', name: '버들', detail: '비의 버들', category: '장식', season: 'winter', seasonName: '겨울', emoji: '🌿', color: '#5B7DB1',
+    imageSrc: HWATU_IMG_BASE + '1/17/Hwatu_December_Tane.svg' }
 ];
 
 // 게임 목록 데이터
