@@ -134,8 +134,7 @@
     var faceContent = '';
     if (card.imageSrc) {
       faceContent =
-        '<img class="card-image" src="' + card.imageSrc + '" alt="' + card.monthName + ' ' + card.name + '" draggable="false">' +
-        '<span class="card-label">' + card.monthName + ' ' + card.name + '</span>';
+        '<img class="card-image" src="' + card.imageSrc + '" alt="' + card.monthName + ' ' + card.name + '" draggable="false">';
     } else {
       faceContent =
         '<span class="card-emoji">' + card.emoji + '</span>' +
